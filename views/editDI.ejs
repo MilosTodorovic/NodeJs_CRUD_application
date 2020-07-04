@@ -1,0 +1,87 @@
+<%- include('header') %>
+
+    <form method="post" action="/editDIById/<%= documentInstance.DIN_SEGMENT_ID %>" >
+        <div class="form-group">
+            <label for="institutionType"> Type of institution: </label>
+            <select class="custom-select" id = "institutionType" name = "institutionType" required>
+                <% types_of_institutions.forEach(function(toi, index) { %>
+                    <%if (toi.TIP_UST === documentInstance.TIP_UST) { %>
+                        <option selected value="<%= toi.TIP_UST %>"><%= toi.TIP_NAZIV %></option>
+                    <% } else { %>  
+                        <option value="<%= toi.TIP_UST %>"><%= toi.TIP_UST %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "institutionId"> Higher education institution ID: </label>
+            <select class = "custom-select" id = "institutionId" name = "institutionId"  required>
+                <% high_education_institutions.forEach(function(hei, index) { %>
+                    <%if (hei.VU_IDENTIFIKATOR === documentInstance.VU_IDENTIFIKATOR) { %>
+                        <option selected value="<%= hei.VU_IDENTIFIKATOR %>"><%= hei.VU_NAZIV %></option>
+                    <% } else { %>  
+                        <option value="<%= hei.VU_IDENTIFIKATOR %>"><%= hei.VU_NAZIV %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "curType"> Type of curriculum: </label>
+            <select class = "custom-select" id = "curType" name = "curType"  required>
+                
+                <% curriculum_type.forEach(function(curr, index) { %>
+                    <%if (curr.TIPP_TIP === documentInstance.TIPP_TIP) { %>
+                        <option selected value="<%= curr.TIPP_TIP %>"><%= curr.TIPP_NAZIV  %></option>
+                    <% } else { %>  
+                        <option value="<%= curr.TIPP_TIP  %>"><%= curr.TIPP_NAZIV %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "curNum"> Curriculum ID: </label>
+            <select class = "custom-select" id = "curNum" name = "curNum"  required>
+                
+                <% registered_curriculum.forEach(function(registered_curriculum, index) { %>
+                    <%if (registered_curriculum.SP_EVIDENCIONI_BROJ === documentInstance.SP_EVIDENCIONI_BROJ) { %>
+                        <option selected value="<%= registered_curriculum.SP_EVIDENCIONI_BROJ %>"><%= registered_curriculum.SP_EVIDENCIONI_BROJ %></option>
+                    <% } else { %>  
+                        <option value="<%= registered_curriculum.SP_EVIDENCIONI_BROJ %>"><%= registered_curriculum.SP_EVIDENCIONI_BROJ %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "curVer"> Curriculum version: </label>
+            <select class = "custom-select" id = "curVer" name = "curVer"  required>
+                
+                <% registered_curriculum.forEach(function(registered_curriculum, index) { %>
+                    <%if (registered_curriculum.SP_VERZIJA === documentInstance.SP_VERZIJA) { %>
+                        <option selected value="<%= registered_curriculum.SP_VERZIJA %>"><%= registered_curriculum.SP_VERZIJA %></option>
+                    <% } else { %>  
+                        <option value="<%= registered_curriculum.SP_VERZIJA %>"><%= registered_curriculum.SP_VERZIJA %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "docID"> Document ID: </label>
+            <select class = "custom-select" id = "docID" name = "docID"  required>
+                
+                <% doc_part.forEach(function(doc_part, index) { %>
+                    <%if (doc_part.DOC_ID === documentInstance.DOC_ID) { %>
+                        <option selected value="<%= doc_part.DOC_ID %>"><%= doc_part.DOC_ID %></option>
+                    <% } else { %>  
+                        <option value="<%= doc_part.DOC_ID %>"><%= doc_part.DOC_ID %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "DISeg"> Document instance ID: </label>
+            <input type = "text" class = "form-control" id = "DISeg" name = "DISeg" value = "<%= documentInstance.DIN_SEGMENT_ID %>">
+        </div>
+        <button type = "submit" class = "btn btn-primary"> Submit </button> 
+    </form>
+
+<%- include('footer') %>

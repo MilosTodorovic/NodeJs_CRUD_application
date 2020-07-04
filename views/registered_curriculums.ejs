@@ -1,0 +1,59 @@
+<%- include('header') %>
+
+<% if (registered_curriculums.length === 0) { %>
+    <div class="alert alert-info" role="alert">
+        <p>There are no registered curriculums to show, click <a href="/addCV/<%= info.VU_IDENTIFIKATOR%>/<%= info.TIP_UST %>/">here</a> to add a new registered curriculum.</p>    
+    </div>
+<% } else { %>
+    <br>
+    <a type="button" class="btn btn-primary" href="/addCV/<%= info.VU_IDENTIFIKATOR%>/<%= info.TIP_UST %>/">Add new registered curriculum</a>
+    <a type="button" class="btn btn-primary" href="/generateCVDocument">Generate Curriculum docs</a>
+    <a type="button" class="btn btn-primary" href="/registeredCVDocuments">View Curriculum docs</a>
+    <br><br>
+    <table class="table table-responsive">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type of Institution</th>
+                <th scope="col">Institution ID</th>
+                <th scope="col">Type of Curriculum</th>
+                <th scope="col">Evidence Number</th>
+                <th scope="col">Version</th>
+                <th scope="col">Name</th>
+                <th scope="col">Creation Date</th> 
+                <th scope="col">End Date</th>
+                <th scope="col">SP_ECTS</th>
+                <th scope="col">Languages</th>
+                <th scope="col">Curriculum Degree</th>
+                <th scope="col">Curriculum Level</th>
+                <th scope="col">Professions</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% registered_curriculums.forEach(function(registered_curriculums, index) { %>
+            <tr>
+                <td><strong><%= index+1 %></strong></td>
+                <td><%= registered_curriculums.TIP_UST %></td>
+                <td><%= registered_curriculums.VU_IDENTIFIKATOR %></td>
+                <td><%= registered_curriculums.TIPP_TIP %></td>
+                <td><%= registered_curriculums.SP_EVIDENCIONI_BROJ %></td>
+                <td><%= registered_curriculums.SP_VERZIJA %></td>
+                <td><%= registered_curriculums.SP_NAZIV %></td>
+                <td><%= registered_curriculums.SP_DATUM_FORMIRANJA %></td>
+                <td><%= registered_curriculums.SP_DATUM_UKIDANJA %></td>
+                <td><%= registered_curriculums.SP_ECTS %></td>
+                <td><%= registered_curriculums.JEZ_JEZIK %></td>
+                <td><%= registered_curriculums.STS_OZNAKA %></td>
+                <td><%= registered_curriculums.NS_NIVO %></td>
+                <td><%= registered_curriculums.SN_OZNAKA %></td>
+                <td><a type="button" class="btn btn-warning" href="/editCVById/<%= info.VU_IDENTIFIKATOR%>/<%= info.TIP_UST %>/<%= registered_curriculums.SP_EVIDENCIONI_BROJ %>">Edit</a></td>
+                <td><a type="button" class="btn btn-danger" href="/deleteCVByNo/<%= info.VU_IDENTIFIKATOR%>/<%= registered_curriculums.TIPP_TIP %>/<%= registered_curriculums.SP_EVIDENCIONI_BROJ %>" onClick="return confirm('This will delete all registered curriculums, are you sure you want proceed?');">Delete</a></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } %>
+
+<%- include('footer') %></br>

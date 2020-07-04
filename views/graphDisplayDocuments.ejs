@@ -1,0 +1,37 @@
+<%- include('header')%>
+
+<style type = "text/css">
+    #viz {
+        width: 1100px;
+        height: 900px;
+        border: 1px, solid lightgray;
+        font: 22pt arial;
+    }
+</style>
+
+<h3>Document instance and document part graphs</h3>
+
+<div class="viz-container" >
+    <div id="viz"></div>
+</div>
+
+<script type="text/javascript">
+    var viz;
+    //Adding an event listener that calls the function draw when loading the page.
+    window.addEventListener('load', draw);
+    //create a draw function that will draw the graphs inside the div 'viz'
+    function draw() {
+        var config = {
+            container_id: "viz",
+            server_url: "bolt://localhost:7687",
+            server_user: "neo4j",
+            server_password: "242242",
+            initial_cypher: "MATCH (d:DOCUMENT_PART) MATCH (di:DOCUMENT_INSTANCE) OPTIONAL MATCH (d)-[r:BELONGS_TO]->() RETURN *"
+        };
+
+        viz = new NeoVis.default(config);
+        viz.render();
+    }
+</script>
+    
+<%- include('footer')%>

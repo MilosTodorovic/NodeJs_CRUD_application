@@ -1,0 +1,93 @@
+<%- include('header') %>
+
+    <form method="post" action="/editCVById/<%= registered_curriculums.VU_IDENTIFIKATOR%>/<%= registered_curriculums.TIP_UST %>/<%= registered_curriculums.SP_EVIDENCIONI_BROJ %>">
+        <div class="form-group">
+            <label for="curriculumType">Curriculum type</label>
+            <select class="custom-select" id="curriculumType" name="curriculumType" required>
+                <% curriculum_types.forEach(function(curr, index) { %>
+                    <%if (curriculum_types.TIPP_TIP === registered_curriculums.TIPP_TIP) { %>
+                        <option selected value="<%= curr.TIPP_TIP %>"><%= curr.TIPP_NAZIV %></option>
+                    <% } else { %>  
+                        <option value="<%= curr.TIPP_TIP %>"><%= curr.TIPP_NAZIV %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="evidenceNo">Evidence Number</label>
+            <input type="text" class="form-control" id="evidenceNo" name="evidenceNo" value = "<%= registered_curriculums.SP_EVIDENCIONI_BROJ %>">
+        </div>
+        <div class="form-group">
+            <label for="version">Version</label>
+            <input type="text" class="form-control" id="version" name="version" value = "<%= registered_curriculums.SP_VERZIJA %>">
+        </div>
+        <div class = "form-group">
+            <label for = "CV_name">Evidence Name</label> 
+            <input type = "text" class = "form-control" id = "CV_name" name = "CV_name" value = "<%= registered_curriculums.SP_NAZIV %>">
+        </div>
+        <div class = "form-group">
+            <label for = "c_date"> Creation Date</label>
+            <!-- <input type = "date" data-date = "" data-date-format = "YYYY-MM-DD" class = "form-control" id = "c_date" name = "c_date"  value = "<%= registered_curriculums.SP_DATUM_FORMIRANJA %>"> -->
+            <input type = "date" data-date = "" data-date-format = "YYYY-MM-DD" class = "form-control" id = "c_date" name = "c_date"  value = "<%= registered_curriculums.SP_DATUM_FORMIRANJA %>">
+        </div>
+        <div class = "form-group">
+            <label for = "e_date">End Date</label>
+            <!-- <input type = "date" class = "form-control" id = "e_date" name = "e_date" value = "<%= registered_curriculums.SP_DATUM_UKIDANJA %>"> -->
+            <input type = "date" class = "form-control" id = "e_date" name = "e_date" value = "<%= registered_curriculums.SP_DATUM_UKIDANJA %>">
+        </div>
+        <div class = "form-group">
+            <label for = "sp_ects">SP_ECTS</label>
+            <input type = "text" class = "form-control" id = "sp_ects" name = "sp_ects" value = "<%= registered_curriculums.SP_ECTS %>">
+        </div>
+        <div class="form-group">
+            <label for="languages">Languages</label>
+            <select class="custom-select" id="langId" name="langName" required>
+                <% languages.forEach(function(lang, index) { %>
+                    <%if (lang.JEZ_JEZIK === registered_curriculums.JEZ_JEZIK) { %>
+                        <option selected value="<%= lang.JEZ_JEZIK %>"><%= lang.JEZ_NAZIV %></option>
+                    <% } else { %>  
+                        <option value="<%= lang.JEZ_JEZIK %>"><%= lang.JEZ_NAZIV %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="curriculumDeg">Curriculum Degree</label>
+            <select class="custom-select" id="curriculumDeg" name="curriculumDeg" required>
+                <% curriculum_degree.forEach(function(currd, index) { %>
+                    <%if (currd.STS_OZNAKA === registered_curriculums.STS_OZNAKA) { %>
+                        <option selected value="<%= currd.STS_OZNAKA %>"><%= currd.STS_NAZIV %></option>
+                    <% } else { %>  
+                        <option value="<%= currd.STS_OZNAKA %>"><%= currd.STS_NAZIV %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="curriculumLvl">Curriculum Level</label>
+            <select class="custom-select" id="curriculumLvl" name="curriculumLvl" required>
+                <% curriculum_level.forEach(function(currl, index) { %>
+                    <%if (currl.NS_NIVO === registered_curriculums.NS_NIVO) { %>
+                        <option selected value="<%= currl.NS_NIVO %>"><%= currl.NA_NAZIV %></option>
+                    <% } else { %>  
+                        <option value="<%= currl.NS_NIVO %>"><%= currl.NA_NAZIV %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="professions">Professions</label>
+            <select class="custom-select" id="professions" name="professions" required>
+                <% professions.forEach(function(prof, index) { %>
+                    <%if (prof.SN_OZNAKA === registered_curriculums.SN_OZNAKA) { %>
+                        <option value="<%= prof.SN_OZNAKA %>" selected = "<%= registered_curriculums.SN_OZNAKA %>"><%= prof.SN_STRUCNI_NAZIV %></option>
+                    <% } else { %>  
+                        <option value="<%= prof.SN_OZNAKA %>"><%= prof.SN_STRUCNI_NAZIV %></option>
+                    <% } %>
+                <% }); %>
+            </select>
+        </div><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+<%- include('footer') %>

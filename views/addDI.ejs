@@ -1,0 +1,65 @@
+<%- include('header') %>
+
+    <form method = "post" action = "/addDI" >
+        <div class = "form-group">
+            <label for = "institutionType"> Type of institution: </label>
+            <select class = "custom-select" id = "institutionType" name = "institutionType" required>
+                <option selected disabled value=""> Select the type of institution..</option>
+                <% types_of_institutions.forEach(function(toi, index) { %>
+                <option value = "<%= toi.TIP_UST %>"><%= toi.TIP_NAZIV %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "institutionId"> Higher education institution ID: </label>
+            <select class = "custom-select" id = "institutionId" name = "institutionId"  required>
+                <option selected disabled value = ""> Select the identifier of the institution..</option>
+                <% high_education_institutions.forEach(function(hei, index) { %>
+                <option value = "<%= hei.VU_IDENTIFIKATOR %>"><%= hei.VU_NAZIV %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "curType"> Type of curriculum: </label>
+            <select class="custom-select" id="curType" name="curType" required>
+                <option selected disabled value="">Select curriculum type...</option>
+                <% curriculum_type.forEach(function(curr, index) { %>
+                <option value="<%= curr.TIPP_TIP %>"><%= curr.TIPP_NAZIV %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "curNum"> Curriculum ID: </label>
+            <select class = "custom-select" id = "curNum" name = "curNum"  required>
+                <option selected disabled value = ""> Select the ID of the curriculum..</option>
+                <% registered_curriculum.forEach(function(registered_curriculum, index) { %>
+                <option value = "<%= registered_curriculum.SP_EVIDENCIONI_BROJ %>"><%= registered_curriculum.SP_EVIDENCIONI_BROJ %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "curVer"> Curriculum version: </label>
+            <select class = "custom-select" id = "curVer" name = "curVer"  required>
+                <option selected disabled value = ""> Select the version of the curriculum..</option>
+                <% registered_curriculum.forEach(function(registered_curriculum, index) { %>
+                <option value = "<%= registered_curriculum.SP_VERZIJA %>"><%= registered_curriculum.SP_VERZIJA %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "docID"> Document ID: </label>
+            <select class = "custom-select" id = "docID" name = "docID"  required>
+                <option selected disabled value = ""> Select the document ID..</option>
+                <% doc_part.forEach(function(doc_part, index) { %>
+                <option value = "<%= doc_part.DOC_ID %>"><%= doc_part.DOC_PARTH_NAME %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class = "form-group">
+            <label for = "DISeg"> Document instance ID: </label>
+            <input type = "text" class = "form-control" id = "DISeg"  name = "DISeg" >
+        </div>
+        <button type = "submit" class = "btn btn-primary"> Submit </button> 
+    </form>
+
+<%- include('footer') %>

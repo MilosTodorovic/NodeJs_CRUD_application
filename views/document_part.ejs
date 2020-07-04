@@ -1,0 +1,35 @@
+<%- include('header') %>
+
+<% if (document_part.length === 0) { %>
+    <div class="alert alert-info" role="alert">
+        <p>There are no document parts to show, click <a href="/addDocPart">here</a> to add a new document part.</p>    
+    </div>
+<% } else { %>
+    <br>
+    <a type="button" class="btn btn-primary" href="/addDocPart">Add new document part</a>
+    <br><br>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Document part ID</th>
+                <th scope="col">Document part Name</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% document_part.forEach(function(document_part, index) { %>
+            <tr>
+                <td><strong><%= index+1 %></strong></td>
+                <td><%= document_part.DOC_ID %></td>
+                <td><%= document_part.DOC_PARTH_NAME %></td>
+                <td><a type="button" class="btn btn-warning" href="/editDocPartById/<%= document_part.DOC_ID %>">Edit</a></td>
+                <td><a type="button" class="btn btn-danger" href="/deleteDocPartById/<%= document_part.DOC_ID %>" onClick="return confirm('This will delete all documents, are you sure you want to proceed?');">Delete</a></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } %>
+
+<%- include('footer') %>

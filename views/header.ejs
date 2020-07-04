@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+        <!-- Externa CSS stylesheet-->
+        <link href="../assets/style.css"/>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+        
+        <script src="https://cdn.neo4jlabs.com/neovis.js/v1.4.0/neovis.js"></script>
+        
+        <title>No-relational Databases Project</title>
+
+
+<!-- 
+        <style type="text/css">
+            html, body {
+                font: 16pt arial;
+            }
+    
+            #viz {
+                width: 900px;
+                height: 700px;
+                border: 1px solid lightgray;
+                font: 22pt arial;
+            }
+        </style> -->
+
+<!-- <script src="https://rawgit.com/neo4j-contrib/neovis.js/master/dist/neovis.js"></script>
+
+<script type="text/javascript">
+
+    var viz;
+
+    function draw() {
+        var config = {
+            container_id: "viz",
+            server_url: "bolt://localhost:7687",
+            server_user: "neo4j",
+            server_password: "sorts-swims-burglaries",
+            labels: {
+                // "Character": {
+                //     "caption": "name",
+                //     "size": "pagerank",
+                //     "community": "community",
+                //     "title_properties": [
+                //         "name",
+                //         "pagerank"
+                //     ]
+                // }
+            },
+            relationships: {
+                // "INTERACTS": {
+                //     "thickness": "weight",
+                //     "caption": false
+                // }
+            },
+            initial_cypher: "MATCH (n)-[r:INTERACTS]->(m) RETURN *"
+        };
+
+        viz = new NeoVis.default(config);
+        viz.render();
+    }
+</script> -->
+
+    </head>
+
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark collapse" id="nav1">
+                
+             
+                <ul class="nav nav-pills flex-column flex-sm-row">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MySQL</a>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item " href="/getAllStates">States</a>
+                            <a class="dropdown-item " href="/getAllInstitutions">Institutions</a>
+                            <a class="dropdown-item " href="/getAllDocParts">Document Parts</a>
+                            <a class="dropdown-item " href="/getAllDI">Document Instance</a>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mongo DB</a>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item " href="/statesDocuments">States Documents</a>
+                            <a class="dropdown-item " href="/institutionsDocuments">Institutions Documents</a>
+                            <a class="dropdown-item " href="/registeredCVDocuments">Registered Curriculum Documents</a>
+                            <a class="dropdown-item " href="/instanceDocuments">Document Instance Documents</a>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Neo4J</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href ="/displayGraphs3"> Display all nodes individualy </a>
+                            <a class="dropdown-item" href="/displayGraphs4"> Display all relations and their nodes</a>
+                            <a class="dropdown-item" href="/displayGraphs">Document Part -- Document Instance</a>
+                            <a class="dropdown-item" href="/displayGraphs2">Registered curriculum -- High Ed Inst -- State</a>
+                            <a class="dropdown-item" href="/displayGraphs5">Document Part -- Document Instance -- Registered curriculum</a>
+                        </div>
+                    </li>
+
+            
+                </ul>
+            </nav> 
+            <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav1">
+                    &#9776;
+                </button>    
+            </nav>     
+
+
+   

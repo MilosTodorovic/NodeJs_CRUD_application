@@ -1,0 +1,42 @@
+<%- include('header') %>
+
+<% if (institutions.length === 0) { %>
+<div class="alert alert-info" role="alert">
+    <p>There are no institutions to show, click <a href="/addInstitution">here</a> to add an institution.</p>
+</div>
+<% } else { %>
+    <br>
+    <a type="button" class="btn btn-primary" href="/addInstitution">Add institution</a>
+    <a type="button" class="btn btn-primary" href="/generateInstitutionsDocument">Generate institution docs</a>
+    <a type="button" class="btn btn-primary" href="/institutionsDocuments">View institution docs</a>
+    <br><br>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Country</th>
+                <th scope="col">Institution name</th>
+                <th scope="col">Institution type</th>
+                <th scope="col">Registered Curriculums</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% institutions.forEach(function(institution, index) { %>
+            <tr>
+                <td><strong><%= index+1 %></strong></td>
+                <td><%= institution.DR_IDENTIFIKATOR %></td>
+                <td><%= institution.VU_NAZIV %></td>
+                <td><%= institution.TIP_UST %></td>
+
+                <td><a type="button" class="btn btn-warning" href="/getAllCVsByInstitution/<%= institution.VU_IDENTIFIKATOR %>">List all curriculums</a></td>
+                <td><a type="button" class="btn btn-warning" href="/editInstitutionById/<%= institution.VU_IDENTIFIKATOR %>">Edit</a></td>
+                <td><a type="button" class="btn btn-danger" href="/deleteInstitutionById/<%= institution.VU_IDENTIFIKATOR %>" onClick="return confirm('This will delete all institutions of this state, are you sure you want proceed?');">Delete</a></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } %>
+
+<%- include('footer') %>

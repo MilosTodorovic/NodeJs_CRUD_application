@@ -1,0 +1,18 @@
+#add {
+    margin: 5px;
+    color: white;
+}
+
+span {
+    color: rgb(161, 82, 82);
+    text-align: center;
+}
+.toggleable-states {
+    display: none;
+}
+.navbar-fnt {
+    color: #FFFFFF;
+}
+.img{
+    background-image:url('/img/home.png');
+    }

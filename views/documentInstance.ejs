@@ -1,0 +1,47 @@
+<%- include('header') %>
+
+<% if (documentInstance.length === 0) { %>
+    <div class="alert alert-info" role="alert">
+        <p>There are no document instances to show, click <a href="/addDI">here</a> to add a new document instance.</p>    
+    </div>
+<% } else { %>
+    <br>
+    <a type="button" class="btn btn-primary" href = "/addDI" > Add Document Instance </a>
+    <a type="button" class="btn btn-primary" href="/generateInstanceDocument">Generate instance docs</a>
+    <a type="button" class="btn btn-primary" href="/instanceDocuments">View instance docs</a>
+    <br><br>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Institution type</th>
+                <th scope="col">Institution ID</th> 
+                <th scope="col">Curriculum type</th>
+                <th scope="col">Evidence number</th>
+                <th scope="col">Version </th>
+                <th scope="col">Document ID</th>
+                <th scope="col">Document Instance Segment ID</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <% documentInstance.forEach(function(documentInstance, index) { %>
+            <tr>
+                <td><strong><%= index+1 %></strong></td>
+                <td> <%= documentInstance.TIP_UST %></td>
+                <td> <%= documentInstance.VU_IDENTIFIKATOR %></td>
+                <td> <%= documentInstance.TIPP_TIP %></td>
+                <td> <%= documentInstance.SP_EVIDENCIONI_BROJ%></td>
+                <td> <%= documentInstance.SP_VERZIJA %></td>
+                <td> <%= documentInstance.DOC_ID%></td>
+                <td> <%= documentInstance.DIN_SEGMENT_ID%></td>
+                <td><a type="button" class="btn btn-warning" href = "/editDIById/<%= documentInstance.DIN_SEGMENT_ID %>">Edit</a></td>
+                <td><a type="button" class="btn btn-danger" href = "/deleteDIById/<%= documentInstance.DIN_SEGMENT_ID %>">Delete</a></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } %>
+
+<%- include('footer') %>

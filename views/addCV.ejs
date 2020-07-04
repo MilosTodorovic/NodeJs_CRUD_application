@@ -1,0 +1,78 @@
+<%- include('header') %>
+
+    <form method="post" action="/addCV/<%= info.VU_IDENTIFIKATOR %>/<%= info.TIP_UST %>/">
+
+
+        <div class="form-group">
+            <label for="curriculumType">Curriculum type</label>
+            <select class="custom-select" id="curriculumType" name="curriculumType" required>
+                <option selected disabled value="">Select curriculum type...</option>
+                <% curriculum_type.forEach(function(curr, index) { %>
+                <option value="<%= curr.TIPP_TIP %>"><%= curr.TIPP_NAZIV %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="evidenceNo">Evidence Number</label>
+            <input type="text" class="form-control" id="evidenceNo" name="evidenceNo">
+        </div>
+        <div class="form-group">
+            <label for="version">Version</label>
+            <input type="text" class="form-control" id="version" name="version">
+        </div>
+        <div class = "form-group">
+            <label for = "CV_name">Evidence Name</label> 
+            <input type = "text" class = "form-control" id = "CV_name" name = "CV_name">
+        </div>
+        <div class = "form-group">
+            <label for = "c_date"> Creation Date</label>
+            <input type = "date" data-date = "" data-date-format = "YYYY-MM-DD" class = "form-control" id = "c_date" name = "c_date">
+        </div>
+        <div class = "form-group">
+            <label for = "e_date">End Date</label>
+            <input type = "date" data-date = "" data-date-format = "YYYY-MM-DD" class = "form-control" id = "e_date" name = "e_date">
+        </div>
+        <div class = "form-group">
+            <label for = "sp_ects">SP_ECTS</label>
+            <input type = "text" class = "form-control" id = "sp_ects" name = "sp_ects">
+        </div>
+        <div class="form-group">
+            <label for="languages">Languages</label>
+            <select class="custom-select" id="langId" name="langName" required>
+                <option selected disabled value="">Select language...</option>
+                <% languages.forEach(function(lang, index) { %>
+                <option value="<%= lang.JEZ_JEZIK %>"><%= lang.JEZ_NAZIV %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="curriculumDeg">Curriculum Degree</label>
+            <select class="custom-select" id="curriculumDeg" name="curriculumDeg" required>
+                <option selected disabled value="">Select curriculum degree...(ATTENTION: Curriculum degree must be same as Curriculum level)</option>
+                <% curriculum_degree.forEach(function(currd, index) { %>
+                <option value="<%= currd.STS_OZNAKA %>"><%= currd.STS_NAZIV %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="curriculumLvl">Curriculum Level</label>
+            <select class="custom-select" id="curriculumLvl" name="curriculumLvl" required>
+                <option selected disabled value="">Select curriculum level...</option>
+                <% curriculum_level.forEach(function(currl, index) { %>
+                <option value="<%= currl.NS_NIVO %>"><%= currl.NA_NAZIV %></option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="professions">Professions</label>
+            <select class="custom-select" id="professions" name="professions" required>
+                <option selected disabled value="">Select profession...</option>
+                <% professions.forEach(function(prof, index) { %>
+                <option value="<%= prof.SN_OZNAKA %>"><%= prof.SN_STRUCNI_NAZIV %></option>
+                <% }); %>
+            </select>
+        </div><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+<%- include('footer') %>
